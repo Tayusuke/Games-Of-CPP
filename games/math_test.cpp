@@ -4,28 +4,44 @@
 
 using namespace std;
 
-int main() {
-	string your_answer = "";
+void generate_Random(int& a, int& b, int& ans) {
 	random_device rd;
 
 	std::uniform_int_distribution<int> dist(1, 10000);
 
-	int number_a = dist(rd);
-	int number_b = dist(rd);
+	a = dist(rd);
+	b = dist(rd);
 
-	int the_answer = number_a + number_b;
+	ans = a + b;
+}
+
+int main() {
+	string your_answer = "";
+
+	int number_a, number_b, the_answer;
+
+	generate_Random(number_a, number_b, the_answer);
 
 	bool isFirst = true;
 
-	while (your_answer != to_string(the_answer)) {
-		if (!isFirst) {
-			cout << "Incorrect..." << endl;
+	while (!(your_answer == "y")) {
+		while (your_answer != to_string(the_answer)) {
+			if (!isFirst) {
+				cout << "Incorrect..." << endl << endl;
+			}
+
+			cout << number_a << " + " << number_b << " = ?" << endl << endl;
+			cin >> your_answer;
+			cout << endl;
+			isFirst = false;
 		}
 
-		cout << number_a << " + " << number_b << " = ?" << endl;
-		cin >> your_answer;
-		isFirst = false;
-	}
+		cout << "Correct!!!" << endl << endl;
+		isFirst = true;
 
-	cout << "Correct!!!" << endl;
+		generate_Random(number_a, number_b, the_answer);
+		cout << "Do you want to exit this test? y/n" << endl << endl;
+		cin >> your_answer;
+		cout << endl;
+	}
 }
