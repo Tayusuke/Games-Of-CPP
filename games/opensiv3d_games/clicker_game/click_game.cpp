@@ -112,7 +112,7 @@ void Main() {
 			AutoClick.draw(lerper(AutoClick));
 			AutoClick.drawFrame(6, black);
 			small(U"need 80point").drawAt(Vec2{ 550, 350 }, black);
-			small(U"increase : {} < {}"_fmt(autoNumber, autoNumber + 1)).drawAt(Vec2{ 550, 400 }, black);
+			small(U"auto click : {} < {}"_fmt(autoNumber, autoNumber + 1)).drawAt(Vec2{ 550, 400 }, black);
 
 			if (AutoClick.leftClicked()) {
 				if (point >= 80) {
